@@ -1,3 +1,4 @@
+import iconSvg from '../assets/icon.svg'
 import './Sidebar.css'
 
 const recentThreads = [
@@ -15,7 +16,9 @@ const instances = [
 export default function Sidebar({ activeThread, onSelectThread, onNewChat }) {
   return (
     <aside className="sidebar">
-      <div className="logo">Quantum© AI</div>
+      <div className="logo">
+        <img src={iconSvg} alt="Patchwork" className="logo-icon" />
+      </div>
 
       <div className="sidebar-nav">
         <button className="nav-item new-synthesis" onClick={onNewChat}>

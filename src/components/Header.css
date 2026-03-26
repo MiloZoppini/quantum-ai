@@ -9,9 +9,10 @@
   position: relative;
 }
 
-.model-label {
-  font-size: 0.85rem;
-  font-weight: 500;
+.header-logo {
+  height: 20px;
+  width: auto;
+  filter: invert(1);
 }
 
 .header-actions {
