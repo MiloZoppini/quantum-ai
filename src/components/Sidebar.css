@@ -30,10 +30,20 @@
   align-items: center;
   margin-bottom: 0.25rem;
   transition: background 0.2s;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .nav-item:hover {
   background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-item.active {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .nav-item.new-synthesis {

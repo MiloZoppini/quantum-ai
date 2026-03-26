@@ -1,36 +1,53 @@
 import './Sidebar.css'
 
 const recentThreads = [
-  'Neural Architecture Analysis',
-  'Entropy Reduction Logs',
-  'Signal-to-Noise Ratio',
-  'Predictive Modeling v2',
+  { id: 'neural', name: 'Neural Architecture Analysis' },
+  { id: 'entropy', name: 'Entropy Reduction Logs' },
+  { id: 'signal', name: 'Signal-to-Noise Ratio' },
+  { id: 'predictive', name: 'Predictive Modeling v2' },
 ]
 
-const instances = ['SF-Main-Cluster', 'Berlin-Edge-01']
+const instances = [
+  { id: 'sf', name: 'SF-Main-Cluster' },
+  { id: 'berlin', name: 'Berlin-Edge-01' },
+]
 
-export default function Sidebar() {
+export default function Sidebar({ activeThread, onSelectThread, onNewChat }) {
   return (
     <aside className="sidebar">
       <div className="logo">Quantum© AI</div>
 
       <div className="sidebar-nav">
-        <a href="#" className="nav-item new-synthesis">+ New Synthesis</a>
+        <button className="nav-item new-synthesis" onClick={onNewChat}>
+          + New Synthesis
+        </button>
 
         <span className="label">Recent Threads —</span>
         {recentThreads.map((thread) => (
-          <a href="#" className="nav-item" key={thread}>{thread}</a>
+          <button
+            className={`nav-item${activeThread === thread.id ? ' active' : ''}`}
+            key={thread.id}
+            onClick={() => onSelectThread(thread.id)}
+          >
+            {thread.name}
+          </button>
         ))}
 
         <span className="label">Instances —</span>
         {instances.map((instance) => (
-          <a href="#" className="nav-item" key={instance}>{instance}</a>
+          <button
+            className={`nav-item${activeThread === instance.id ? ' active' : ''}`}
+            key={instance.id}
+            onClick={() => onSelectThread(instance.id)}
+          >
+            {instance.name}
+          </button>
         ))}
       </div>
 
       <div className="footer-sidebar">
-        <a href="#" className="nav-item">User Profile</a>
-        <a href="#" className="nav-item">System Status: Active</a>
+        <button className="nav-item">User Profile</button>
+        <button className="nav-item">System Status: Active</button>
       </div>
     </aside>
   )

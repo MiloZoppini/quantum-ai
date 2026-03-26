@@ -28,8 +28,7 @@
 .send-btn {
   position: absolute;
   right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 12px;
   background: var(--text-main);
   border: none;
   width: 32px;
@@ -39,6 +38,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.send-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 .input-footer {
