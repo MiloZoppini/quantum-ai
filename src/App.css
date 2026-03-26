@@ -4,6 +4,7 @@
   flex-direction: column;
   position: relative;
   background: radial-gradient(circle at center, #151515 0%, #0d0d0d 100%);
+  min-width: 0;
 }
 
 .chat-container {
@@ -15,4 +16,10 @@
   align-items: center;
   position: relative;
   z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .chat-container {
+    padding: 1rem 0;
+  }
 }

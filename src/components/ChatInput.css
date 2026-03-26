@@ -23,6 +23,16 @@
   font-size: 1rem;
   outline: none;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chat-input:focus {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="purple"] .chat-input:focus {
+  border-color: rgba(225, 212, 238, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(225, 212, 238, 0.15);
 }
 
 .send-btn {
@@ -54,4 +64,16 @@
   font-size: 0.65rem;
   color: var(--text-muted);
   margin-top: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .input-container {
+    padding: 1rem;
+  }
+
+  .chat-input {
+    font-size: 0.9rem;
+    padding: 0.85rem 1rem;
+    padding-right: 3rem;
+  }
 }

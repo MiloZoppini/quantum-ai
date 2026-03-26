@@ -125,7 +125,17 @@ function App() {
   const [activeThread, setActiveThread] = useState('default')
   const [threads, setThreads] = useState(threadData)
   const [isTyping, setIsTyping] = useState(false)
+  const [theme, setTheme] = useState('dark')
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   const chatRef = useRef(null)
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme === 'purple' ? 'purple' : '')
+  }, [theme])
+
+  const handleToggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'purple' : 'dark'))
+  }
 
   const messages = threads[activeThread] || []
 
@@ -190,10 +200,12 @@ function App() {
         activeThread={activeThread}
         onSelectThread={handleSelectThread}
         onNewChat={handleNewChat}
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
       />
       <main className="main-area">
-        <DitherCanvas />
-        <Header />
+        <DitherCanvas theme={theme} />
+        <Header theme={theme} onToggleTheme={handleToggleTheme} onMenuOpen={() => setSidebarOpen(true)} />
 
         <div className="chat-container" ref={chatRef}>
           {messages.map((msg) => (

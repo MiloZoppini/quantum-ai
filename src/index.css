@@ -8,6 +8,15 @@
   --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --bubble-user: #2f2f2f;
   --input-bg: #1a1a1a;
+  --brand-filter: invert(1);
+  --avatar-bg: var(--text-main);
+}
+
+[data-theme="purple"] {
+  --brand-filter: invert(73%) sepia(10%) saturate(800%) hue-rotate(230deg) brightness(95%) contrast(90%);
+  --avatar-bg: #E1D4EE;
+  --border-color: rgba(225, 212, 238, 0.15);
+  --input-bg: #1a171e;
 }
 
 * {

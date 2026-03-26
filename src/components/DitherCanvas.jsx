@@ -7,7 +7,7 @@ const bayerMatrix = [
   [15, 7, 13, 5],
 ]
 
-export default function DitherCanvas() {
+export default function DitherCanvas({ theme }) {
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -15,6 +15,10 @@ export default function DitherCanvas() {
     const ctx = canvas.getContext('2d')
     let width, height, time = 0
     let animId
+
+    const isPurple = theme === 'purple'
+    const ditherColor = isPurple ? '225, 212, 238' : '255, 255, 255'
+    const ditherAlpha = isPurple ? 0.35 : 0.1
 
     function resize() {
       width = canvas.parentElement.clientWidth
@@ -39,7 +43,7 @@ export default function DitherCanvas() {
           const threshold = bayerMatrix[y % 4][x % 4] / 16 - 0.5
 
           if (intensity + threshold > 0.4) {
-            ctx.fillStyle = 'rgba(255,255,255,0.1)'
+            ctx.fillStyle = `rgba(${ditherColor}, ${ditherAlpha})`
             ctx.fillRect(x * gridSize, y * gridSize, gridSize - 2, gridSize - 2)
           }
         }
@@ -56,7 +60,7 @@ export default function DitherCanvas() {
       window.removeEventListener('resize', resize)
       cancelAnimationFrame(animId)
     }
-  }, [])
+  }, [theme])
 
   return (
     <canvas

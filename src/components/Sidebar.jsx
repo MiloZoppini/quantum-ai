@@ -1,4 +1,4 @@
-import iconSvg from '../assets/icon.svg'
+import logoSvg from '../assets/logo.svg'
 import './Sidebar.css'
 
 const recentThreads = [
@@ -13,45 +13,58 @@ const instances = [
   { id: 'berlin', name: 'Berlin-Edge-01' },
 ]
 
-export default function Sidebar({ activeThread, onSelectThread, onNewChat }) {
+export default function Sidebar({ activeThread, onSelectThread, onNewChat, isOpen, onClose }) {
+  const handleSelect = (id) => {
+    onSelectThread(id)
+    onClose()
+  }
+
+  const handleNew = () => {
+    onNewChat()
+    onClose()
+  }
+
   return (
-    <aside className="sidebar">
-      <div className="logo">
-        <img src={iconSvg} alt="Patchwork" className="logo-icon" />
-      </div>
+    <>
+      {isOpen && <div className="sidebar-overlay" onClick={onClose} />}
+      <aside className={`sidebar${isOpen ? ' open' : ''}`}>
+        <div className="logo">
+          <img src={logoSvg} alt="Patchwork" className="logo-full" />
+        </div>
 
-      <div className="sidebar-nav">
-        <button className="nav-item new-synthesis" onClick={onNewChat}>
-          + New Synthesis
-        </button>
-
-        <span className="label">Recent Threads —</span>
-        {recentThreads.map((thread) => (
-          <button
-            className={`nav-item${activeThread === thread.id ? ' active' : ''}`}
-            key={thread.id}
-            onClick={() => onSelectThread(thread.id)}
-          >
-            {thread.name}
+        <div className="sidebar-nav">
+          <button className="nav-item new-synthesis" onClick={handleNew}>
+            + New Synthesis
           </button>
-        ))}
 
-        <span className="label">Instances —</span>
-        {instances.map((instance) => (
-          <button
-            className={`nav-item${activeThread === instance.id ? ' active' : ''}`}
-            key={instance.id}
-            onClick={() => onSelectThread(instance.id)}
-          >
-            {instance.name}
-          </button>
-        ))}
-      </div>
+          <span className="label">Recent Threads —</span>
+          {recentThreads.map((thread) => (
+            <button
+              className={`nav-item${activeThread === thread.id ? ' active' : ''}`}
+              key={thread.id}
+              onClick={() => handleSelect(thread.id)}
+            >
+              {thread.name}
+            </button>
+          ))}
 
-      <div className="footer-sidebar">
-        <button className="nav-item">User Profile</button>
-        <button className="nav-item">System Status: Active</button>
-      </div>
-    </aside>
+          <span className="label">Instances —</span>
+          {instances.map((instance) => (
+            <button
+              className={`nav-item${activeThread === instance.id ? ' active' : ''}`}
+              key={instance.id}
+              onClick={() => handleSelect(instance.id)}
+            >
+              {instance.name}
+            </button>
+          ))}
+        </div>
+
+        <div className="footer-sidebar">
+          <button className="nav-item">User Profile</button>
+          <button className="nav-item">System Status: Active</button>
+        </div>
+      </aside>
+    </>
   )
 }
