@@ -1,0 +1,42 @@
+.message-wrap {
+  width: 100%;
+  max-width: 800px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background: var(--text-main);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.avatar.ai {
+  background: #fff;
+  filter: invert(1);
+}
+
+.message-content {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-main);
+}
+
+.user-row {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.highlight {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
