@@ -11,7 +11,7 @@ const baseThreads = {
       id: 1,
       sender: 'ai',
       label: 'Solution Architect',
-      text: 'I can help with rollout planning, guardrails, model selection, retrieval architecture, and cost sizing for the Quantum-4 engine.',
+      text: 'I can help with rollout planning, guardrails, model selection, retrieval architecture, and cost sizing for the Patchwork platform.',
     },
     {
       id: 2,
@@ -135,7 +135,7 @@ const threadGroups = [
 ]
 
 const quickActions = [
-  'Design a pilot rollout for Quantum-4',
+  'Design a pilot rollout for Patchwork',
   'Suggest a secure RAG architecture for internal docs',
   'Estimate cost for 50k daily requests',
   'List enterprise guardrails before launch',

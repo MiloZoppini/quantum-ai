@@ -24,7 +24,7 @@ export default function ChatInput({ onSend, disabled }) {
         <input
           type="text"
           className="chat-input"
-          placeholder="Message Quantum..."
+          placeholder="Message Patchwork..."
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -36,7 +36,7 @@ export default function ChatInput({ onSend, disabled }) {
           </svg>
         </button>
         <div className="input-footer">
-          ©2024 QUANTUM SYSTEMS INC. ALL RIGHTS RESERVED.
+          ©2024 PATCHWORK. ALL RIGHTS RESERVED.
         </div>
       </div>
     </div>

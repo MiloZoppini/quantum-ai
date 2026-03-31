@@ -14,7 +14,7 @@ const threadData = {
     {
       id: 1,
       sender: 'ai',
-      label: 'Quantum Core Logic —',
+      label: 'Patchwork Core Logic —',
       text: 'How can I assist with your enterprise data synthesis today? I am ready to transform **unstructured chaos** into linear logic across your neural architecture.',
     },
     {
@@ -109,7 +109,7 @@ const threadData = {
     {
       id: 50,
       sender: 'ai',
-      label: 'Quantum Core Logic —',
+      label: 'Patchwork Core Logic —',
       text: 'Connected to **SF-Main-Cluster**. All systems operational.\n\n• Nodes online: 247 / 250\n• Data throughput: 40TB/s\n• Uptime: 99.9997%\n• Temperature: 18.3°C\n\n3 nodes are in scheduled maintenance. Expected return: 02:00 UTC.',
     },
   ],
@@ -117,7 +117,7 @@ const threadData = {
     {
       id: 60,
       sender: 'ai',
-      label: 'Quantum Core Logic —',
+      label: 'Patchwork Core Logic —',
       text: 'Connected to **Berlin-Edge-01**. Operating in edge processing mode.\n\n• Nodes online: 64 / 64\n• Data throughput: 12TB/s\n• Uptime: 99.98%\n• Temperature: 16.7°C\n\nAll European data streams are routing through this node. Latency to SF-Main: **34ms**.',
     },
   ],
@@ -184,7 +184,7 @@ function App() {
         {
           id: Date.now(),
           sender: 'ai',
-          label: 'Quantum Core Logic —',
+          label: 'Patchwork Core Logic —',
           text: 'New synthesis session initialized. All neural pathways are clear and ready for processing. What would you like to explore?',
         },
       ],

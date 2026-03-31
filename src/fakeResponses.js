@@ -1,6 +1,6 @@
 const labels = [
   'Neural Architecture —',
-  'Quantum Core Logic —',
+  'Patchwork Core Logic —',
   'Synthesis Engine —',
   'Deep Analysis —',
   'Signal Processing —',
@@ -13,7 +13,7 @@ const responses = [
     keywords: ['hello', 'hi', 'hey', 'ciao'],
     texts: [
       'Greetings. All neural pathways are active and ready for synthesis. What data streams shall I process for you today?',
-      'Welcome back to the Quantum interface. Systems are nominal. Ready to process your next directive.',
+      'Welcome back to the Patchwork interface. Systems are nominal. Ready to process your next directive.',
     ],
   },
   {
@@ -61,9 +61,9 @@ const responses = [
 ]
 
 const fallbackTexts = [
-  'Processing your request through the quantum synthesis engine...\n\nThe neural architecture has processed your input across **7 parallel data streams**. Results indicate a coherent pattern emerging from the noise layer.\n\n• Confidence score: 97.3%\n• Processing latency: 0.4ms\n• Output fidelity: High\n\nIs there a specific vector you would like me to explore further?',
+  'Processing your request through the Patchwork synthesis engine...\n\nThe neural architecture has processed your input across **7 parallel data streams**. Results indicate a coherent pattern emerging from the noise layer.\n\n• Confidence score: 97.3%\n• Processing latency: 0.4ms\n• Output fidelity: High\n\nIs there a specific vector you would like me to explore further?',
   'Acknowledged. Routing your query through the deep analysis pipeline...\n\nI have cross-referenced your input against **2.4 billion data points** in the active knowledge graph. The synthesis reveals several actionable pathways.\n\n• Primary recommendation: Increase signal amplification by 8%\n• Secondary: Restructure the data ingestion pipeline\n• Tertiary: Enable adaptive learning on Node SF-7\n\nStanding by for further instructions.',
-  'Your directive has been received and processed.\n\nThe quantum core has identified **4 optimization vectors** relevant to your query:\n\n• Vector Alpha: Data compression ratio improvement\n• Vector Beta: Latency reduction across edge nodes\n• Vector Gamma: Predictive cache warming\n• Vector Delta: Entropy normalization\n\nEach vector carries a projected efficiency gain of **6-11%**. Shall I proceed with implementation?',
+  'Your directive has been received and processed.\n\nThe Patchwork core has identified **4 optimization vectors** relevant to your query:\n\n• Vector Alpha: Data compression ratio improvement\n• Vector Beta: Latency reduction across edge nodes\n• Vector Gamma: Predictive cache warming\n• Vector Delta: Entropy normalization\n\nEach vector carries a projected efficiency gain of **6-11%**. Shall I proceed with implementation?',
   'Interesting query. Let me run this through the synthesis engine...\n\nAfter processing across all available clusters, I can confirm the following:\n\n• Your hypothesis aligns with **89.4% of observed data patterns**\n• The remaining 10.6% deviation is within acceptable noise margins\n• No conflicting signals detected in the primary data stream\n\nRecommendation: Proceed with confidence. The data supports your approach.',
 ]
 

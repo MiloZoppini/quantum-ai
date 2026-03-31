@@ -35,10 +35,10 @@ export default function ProductPage() {
       <main className="product-content">
         <section className="hero-section">
           <div className="hero-copy">
-            <span className="hero-badge">QUANTUM-4 ENGINE</span>
+            <span className="hero-badge">PATCHWORK PLATFORM</span>
             <h1 className="hero-title">
-              Enterprise AI Synthesis<br />
-              <span className="hero-highlight">at Quantum Scale</span>
+              Enterprise AI Operations<br />
+              <span className="hero-highlight">built for Patchwork</span>
             </h1>
             <p className="hero-description">
               Transform unstructured chaos into linear logic. Process 40TB/s across distributed
@@ -99,7 +99,7 @@ export default function ProductPage() {
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
               </div>
-              <h3>Quantum Encryption</h3>
+              <h3>Patchwork Security</h3>
               <p>Military-grade AES-256-GCM with quantum-resistant key exchange protecting all data streams.</p>
             </div>
             <div className="feature-card">
@@ -147,13 +147,13 @@ export default function ProductPage() {
         <section className="cta-section">
           <h2 className="section-title">Ready to Transform Your Data?</h2>
           <p className="cta-description">
-            Deploy your first Quantum instance in seconds. No configuration required.
+            Launch your first Patchwork workspace in seconds. No configuration required.
           </p>
           <Link to="/" className="btn-primary">Get Started Free</Link>
         </section>
 
         <footer className="product-footer">
-          ©2024 QUANTUM SYSTEMS INC. ALL RIGHTS RESERVED.
+          ©2024 PATCHWORK. ALL RIGHTS RESERVED.
         </footer>
       </main>
 
