@@ -46,10 +46,15 @@
 }
 
 .hero-section {
-  text-align: center;
-  padding: 6rem 2rem 4rem;
-  max-width: 800px;
+  display: block;
+  padding: 4rem 2rem 4.5rem;
+  max-width: 1100px;
   margin: 0 auto;
+}
+
+.hero-copy {
+  text-align: left;
+  max-width: 760px;
 }
 
 .hero-badge {
@@ -85,13 +90,44 @@
   line-height: 1.7;
   color: var(--text-muted);
   max-width: 600px;
-  margin: 0 auto 2.5rem;
+  margin: 0 0 2.5rem;
 }
 
 .hero-actions {
   display: flex;
   gap: 1rem;
-  justify-content: center;
+  justify-content: flex-start;
+}
+
+.hero-notes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+  max-width: 640px;
+}
+
+.hero-note {
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.hero-note span {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.hero-note strong {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  font-weight: 500;
 }
 
 .btn-primary {
@@ -261,7 +297,9 @@
   }
 
   .hero-section {
-    padding: 4rem 1.5rem 3rem;
+    grid-template-columns: 1fr;
+    padding: 3rem 1.25rem 3rem;
+    gap: 1.5rem;
   }
 
   .stats-section {
@@ -274,10 +312,14 @@
 
   .hero-actions {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
   }
 
   .product-nav {
     padding: 0.75rem 1rem;
+  }
+
+  .hero-notes {
+    grid-template-columns: 1fr;
   }
 }

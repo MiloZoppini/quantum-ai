@@ -34,19 +34,32 @@ export default function ProductPage() {
 
       <main className="product-content">
         <section className="hero-section">
-          <span className="hero-badge">QUANTUM-4 ENGINE</span>
-          <h1 className="hero-title">
-            Enterprise AI Synthesis<br />
-            <span className="hero-highlight">at Quantum Scale</span>
-          </h1>
-          <p className="hero-description">
-            Transform unstructured chaos into linear logic. Process 40TB/s across distributed
-            neural architectures with military-grade encryption and predictive modeling.
-          </p>
-          <div className="hero-actions">
-            <Link to="/" className="btn-primary">Launch Console</Link>
-            <a href="#features" className="btn-secondary">Explore Features</a>
+          <div className="hero-copy">
+            <span className="hero-badge">QUANTUM-4 ENGINE</span>
+            <h1 className="hero-title">
+              Enterprise AI Synthesis<br />
+              <span className="hero-highlight">at Quantum Scale</span>
+            </h1>
+            <p className="hero-description">
+              Transform unstructured chaos into linear logic. Process 40TB/s across distributed
+              neural architectures with military-grade encryption and predictive modeling.
+            </p>
+            <div className="hero-actions">
+              <Link to="/" className="btn-primary">Launch Console</Link>
+              <a href="#features" className="btn-secondary">Explore Features</a>
+            </div>
+            <div className="hero-notes">
+              <div className="hero-note">
+                <span>Embedded Assistant</span>
+                <strong>Opens only on click and closes cleanly as a larger overlay</strong>
+              </div>
+              <div className="hero-note">
+                <span>Expanded Workspace</span>
+                <strong>Large multi-thread workspace without breaking the hero layout</strong>
+              </div>
+            </div>
           </div>
+
         </section>
 
         <section className="stats-section">
