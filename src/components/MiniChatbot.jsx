@@ -168,7 +168,7 @@ function renderText(text) {
   })
 }
 
-export default function MiniChatbot({ theme = 'dark' }) {
+export default function MiniChatbot({ theme = 'dark', onOpenChange = () => {} }) {
   const [threads, setThreads] = useState(baseThreads)
   const [activeThread, setActiveThread] = useState('default')
   const [input, setInput] = useState('')
@@ -210,6 +210,10 @@ export default function MiniChatbot({ theme = 'dark' }) {
     window.addEventListener('keydown', handleEscape)
     return () => window.removeEventListener('keydown', handleEscape)
   }, [isOpen, sidebarOpen])
+
+  useEffect(() => {
+    onOpenChange(isOpen)
+  }, [isOpen, onOpenChange])
 
   const nextId = () => {
     sequenceRef.current += 1
