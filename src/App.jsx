@@ -7,6 +7,8 @@ import DitherCanvas from './components/DitherCanvas'
 import { generateResponse } from './fakeResponses'
 import './App.css'
 
+const EMPTY_MESSAGES = []
+
 const threadData = {
   default: [
     {
@@ -137,7 +139,7 @@ function App() {
     setTheme((prev) => (prev === 'dark' ? 'purple' : 'dark'))
   }
 
-  const messages = threads[activeThread] || []
+  const messages = threads[activeThread] ?? EMPTY_MESSAGES
 
   useEffect(() => {
     if (chatRef.current) {

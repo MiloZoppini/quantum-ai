@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './Header.css'
 
 export default function Header({ theme, onToggleTheme, onMenuOpen }) {
@@ -13,7 +14,7 @@ export default function Header({ theme, onToggleTheme, onMenuOpen }) {
           {theme === 'dark' ? 'Purple Mode' : 'Dark Mode'}
         </button>
         <a href="#" className="btn-pill">Deploy Instance</a>
-        <a href="#" className="btn-pill btn-pill-hide-mobile">White Paper</a>
+        <Link to="/chatbot" className="btn-pill btn-pill-hide-mobile">Chatbot</Link>
       </div>
     </header>
   )
