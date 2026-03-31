@@ -402,12 +402,12 @@ export default function MiniChatbot({ theme = 'dark' }) {
                 <div className="mini-chatbot-body" ref={chatBodyRef}>
                   {messages.map((message) => (
                     <div key={message.id} className={`mini-chatbot-message${message.sender === 'user' ? ' is-user' : ''}`}>
-                      <div className={`mini-chatbot-avatar${message.sender === 'user' ? ' is-user' : ''}`}>
-                        {message.sender === 'user' ? 'U' : <img src={iconSvg} alt="" />}
-                      </div>
                       <div className="mini-chatbot-message-content">
-                        {message.label && <div className="mini-chatbot-message-label">{message.label}</div>}
-                        <div className={`mini-chatbot-bubble${message.sender === 'user' ? ' is-user' : ''}`}>
+                        <div
+                          className={`mini-chatbot-bubble${
+                            message.sender === 'user' ? ' is-user' : ' is-ai'
+                          }`}
+                        >
                           {renderText(message.text)}
                         </div>
                       </div>
@@ -416,12 +416,8 @@ export default function MiniChatbot({ theme = 'dark' }) {
 
                   {isTyping && (
                     <div className="mini-chatbot-message">
-                      <div className="mini-chatbot-avatar">
-                        <img src={iconSvg} alt="" />
-                      </div>
                       <div className="mini-chatbot-message-content">
-                        <div className="mini-chatbot-message-label">Assistant</div>
-                        <div className="mini-chatbot-bubble">
+                        <div className="mini-chatbot-bubble is-ai is-typing">
                           <span className="mini-typing">
                             <span className="mini-dot" />
                             <span className="mini-dot" />
