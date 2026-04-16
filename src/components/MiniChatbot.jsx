@@ -6,132 +6,40 @@ import { generateResponse } from '../fakeResponses'
 import './MiniChatbot.css'
 
 const baseThreads = {
-  default: [
+  policy: [
     {
       id: 1,
       sender: 'ai',
-      label: 'Solution Architect',
-      text: 'I can help with rollout planning, guardrails, model selection, retrieval architecture, and cost sizing for the Patchwork platform.',
+      label: 'Policy Model —',
+      text: 'Policy model active. I am configured to analyze **regulatory frameworks**, compliance requirements, and governance structures. How can I assist you today?',
     },
+  ],
+  insight: [
     {
       id: 2,
-      sender: 'user',
-      text: 'We need a practical pilot for enterprise knowledge search.',
+      sender: 'ai',
+      label: 'Insight Model —',
+      text: 'Insight model active. I am optimized for **data pattern recognition**, intelligence synthesis, and predictive analytics. What would you like to explore?',
     },
+  ],
+  hybrid: [
     {
       id: 3,
       sender: 'ai',
-      label: 'Pilot Plan',
-      text: 'For a strong first pilot I would start with one internal use case, one trusted document corpus, and tight evaluation criteria.\n\n• Use case: support knowledge retrieval for internal agents\n• Scope: 5k to 20k vetted documents\n• Success metrics: answer quality, citation accuracy, and time saved per case\n• Rollout: 2-week sandbox, 2-week shadow mode, then restricted production\n\nIf you want, I can turn this into a full implementation checklist.',
-    },
-  ],
-  architecture: [
-    {
-      id: 10,
-      sender: 'ai',
-      label: 'Architecture Review',
-      text: 'This thread is focused on architecture decisions for enterprise AI assistants.',
-    },
-    {
-      id: 11,
-      sender: 'user',
-      text: 'What stack would you use for a secure internal assistant over company docs?',
-    },
-    {
-      id: 12,
-      sender: 'ai',
-      label: 'Reference Stack',
-      text: 'I would use a standard RAG stack with strict permissions.\n\n• Ingestion: scheduled document sync with metadata tagging\n• Retrieval: hybrid search with chunking tuned for policy and handbook docs\n• Generation: grounded answers with citations only\n• Security: SSO, role-aware filtering, audit logs, and prompt injection defenses\n• Operations: offline eval set plus weekly review of failed answers',
-    },
-  ],
-  guardrails: [
-    {
-      id: 20,
-      sender: 'ai',
-      label: 'Security Review',
-      text: 'This thread is tracking guardrails and compliance constraints for the deployment.',
-    },
-    {
-      id: 21,
-      sender: 'user',
-      text: 'What guardrails do we need before exposing this to employees?',
-    },
-    {
-      id: 22,
-      sender: 'ai',
-      label: 'Guardrail Checklist',
-      text: 'Before launch I would require these controls.\n\n• Role-based document filtering at retrieval time\n• Redaction for secrets, PII, and credentials in indexed content\n• Response policies for legal, HR, and security-sensitive topics\n• Citation requirement for factual answers\n• Full audit logs for prompts, retrieval sources, and final responses',
-    },
-  ],
-  economics: [
-    {
-      id: 30,
-      sender: 'ai',
-      label: 'Cost Modeling',
-      text: 'This thread is estimating the financial profile of a production rollout.',
-    },
-    {
-      id: 31,
-      sender: 'user',
-      text: 'How would you estimate cost for 50,000 requests per day?',
-    },
-    {
-      id: 32,
-      sender: 'ai',
-      label: 'Sizing Approach',
-      text: 'I would break it into input tokens, output tokens, retrieval cost, and platform overhead.\n\n• Traffic model: average prompt size, average answer size, peak concurrency\n• Retrieval: vector storage, reranking, and cache hit rate\n• Reliability: retries and fallback model usage\n• Optimization: prompt compression, response caching, and tiered models\n\nWith those assumptions, I can produce a monthly operating estimate and a cheaper fallback plan.',
-    },
-  ],
-  rollout: [
-    {
-      id: 40,
-      sender: 'ai',
-      label: 'Rollout Planning',
-      text: 'This thread is focused on staging and adoption strategy.',
-    },
-    {
-      id: 41,
-      sender: 'user',
-      text: 'How should we phase the rollout across teams?',
-    },
-    {
-      id: 42,
-      sender: 'ai',
-      label: 'Deployment Strategy',
-      text: 'I would phase it in three waves.\n\n• Wave 1: one high-signal team with clear workflows and fast feedback\n• Wave 2: broaden to adjacent teams after evaluating failure patterns\n• Wave 3: company-wide release with documentation, office hours, and usage monitoring\n\nThe key is to keep approval gates between waves rather than launching everywhere at once.',
-    },
-  ],
-  infra: [
-    {
-      id: 50,
-      sender: 'ai',
-      label: 'Platform Ops',
-      text: 'Infra thread active. I can help with regions, uptime targets, rate limits, and fallback paths.',
-    },
-  ],
-  evaluation: [
-    {
-      id: 60,
-      sender: 'ai',
-      label: 'Evaluation',
-      text: 'Evaluation thread active. I can help define groundedness checks, human review loops, and offline benchmarks.',
+      label: 'Hybrid Model —',
+      text: 'Hybrid model active. I combine **policy analysis** with **data insights** for comprehensive synthesis across all domains. Ready to process your query.',
     },
   ],
 }
 
 const threadLibrary = {
-  default: 'Pilot Strategy',
-  architecture: 'Architecture',
-  guardrails: 'Guardrails',
-  economics: 'Cost Model',
-  rollout: 'Rollout Plan',
-  infra: 'Infrastructure',
-  evaluation: 'Evaluation',
+  policy: 'Policy',
+  insight: 'Insight',
+  hybrid: 'Hybrid',
 }
 
 const threadGroups = [
-  { title: 'Workstreams', ids: ['default', 'architecture', 'guardrails', 'economics', 'rollout'] },
-  { title: 'Operations', ids: ['infra', 'evaluation'] },
+  { title: 'Models', ids: ['policy', 'insight', 'hybrid'] },
 ]
 
 const quickActions = [
@@ -170,7 +78,7 @@ function renderText(text) {
 
 export default function MiniChatbot({ theme = 'dark', onOpenChange = () => {} }) {
   const [threads, setThreads] = useState(baseThreads)
-  const [activeThread, setActiveThread] = useState('default')
+  const [activeThread, setActiveThread] = useState('policy')
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
@@ -180,7 +88,6 @@ export default function MiniChatbot({ theme = 'dark', onOpenChange = () => {} })
   const sequenceRef = useRef(1000)
 
   const messages = threads[activeThread] ?? emptyMessages
-  const liveThreads = Object.keys(threads).filter((threadId) => threadId.startsWith('new-'))
 
   useEffect(() => {
     if (chatBodyRef.current) {
@@ -269,39 +176,13 @@ export default function MiniChatbot({ theme = 'dark', onOpenChange = () => {} })
     }
   }
 
-  const handleNewThread = () => {
-    const threadId = `new-${nextId()}`
-    const starterMessage = {
-      id: nextId(),
-      sender: 'ai',
-      label: 'Working Session',
-      text: 'New session ready. Ask for architecture, rollout, costs, guardrails, or evaluation and I will structure the plan clearly.',
-    }
-
-    setThreads((prev) => ({
-      ...prev,
-      [threadId]: [starterMessage],
-    }))
-    setActiveThread(threadId)
-    setSidebarOpen(false)
-  }
-
   const selectThread = (threadId) => {
     setActiveThread(threadId)
     setSidebarOpen(false)
   }
 
   const getThreadName = (threadId) => {
-    if (threadLibrary[threadId]) {
-      return threadLibrary[threadId]
-    }
-
-    const position = liveThreads.indexOf(threadId)
-    if (position >= 0) {
-      return `New Chat ${position + 1}`
-    }
-
-    return 'Chat'
+    return threadLibrary[threadId] ?? 'Chat'
   }
 
   return (
@@ -337,26 +218,7 @@ export default function MiniChatbot({ theme = 'dark', onOpenChange = () => {} })
                   <img src={logoSvg} alt="Patchwork" className="mini-chatbot-brand-logo" />
                 </div>
 
-                <button className="mini-chatbot-new" onClick={handleNewThread}>
-                  + New Chat
-                </button>
-
                 <div className="mini-chatbot-nav">
-                  {liveThreads.length > 0 && (
-                    <div className="mini-chatbot-nav-section">
-                      <span className="mini-chatbot-nav-label">Recent</span>
-                      {liveThreads.map((threadId) => (
-                        <button
-                          key={threadId}
-                          className={`mini-chatbot-thread${activeThread === threadId ? ' active' : ''}`}
-                          onClick={() => selectThread(threadId)}
-                        >
-                          {getThreadName(threadId)}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-
                   {threadGroups.map((group) => (
                     <div key={group.title} className="mini-chatbot-nav-section">
                       <span className="mini-chatbot-nav-label">{group.title}</span>
