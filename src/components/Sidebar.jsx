@@ -1,26 +1,15 @@
 import logoSvg from '../assets/logo.svg'
 import './Sidebar.css'
 
-const recentThreads = [
-  { id: 'neural', name: 'Neural Architecture Analysis' },
-  { id: 'entropy', name: 'Entropy Reduction Logs' },
-  { id: 'signal', name: 'Signal-to-Noise Ratio' },
-  { id: 'predictive', name: 'Predictive Modeling v2' },
+const models = [
+  { id: 'policy', name: 'Policy' },
+  { id: 'insight', name: 'Insight' },
+  { id: 'hybrid', name: 'Hybrid' },
 ]
 
-const instances = [
-  { id: 'sf', name: 'SF-Main-Cluster' },
-  { id: 'berlin', name: 'Berlin-Edge-01' },
-]
-
-export default function Sidebar({ activeThread, onSelectThread, onNewChat, isOpen, onClose }) {
+export default function Sidebar({ activeModel, onSelectModel, isOpen, onClose }) {
   const handleSelect = (id) => {
-    onSelectThread(id)
-    onClose()
-  }
-
-  const handleNew = () => {
-    onNewChat()
+    onSelectModel(id)
     onClose()
   }
 
@@ -33,29 +22,14 @@ export default function Sidebar({ activeThread, onSelectThread, onNewChat, isOpe
         </div>
 
         <div className="sidebar-nav">
-          <button className="nav-item new-synthesis" onClick={handleNew}>
-            + New Synthesis
-          </button>
-
-          <span className="label">Recent Threads —</span>
-          {recentThreads.map((thread) => (
+          <span className="label">Models —</span>
+          {models.map((model) => (
             <button
-              className={`nav-item${activeThread === thread.id ? ' active' : ''}`}
-              key={thread.id}
-              onClick={() => handleSelect(thread.id)}
+              className={`nav-item${activeModel === model.id ? ' active' : ''}`}
+              key={model.id}
+              onClick={() => handleSelect(model.id)}
             >
-              {thread.name}
-            </button>
-          ))}
-
-          <span className="label">Instances —</span>
-          {instances.map((instance) => (
-            <button
-              className={`nav-item${activeThread === instance.id ? ' active' : ''}`}
-              key={instance.id}
-              onClick={() => handleSelect(instance.id)}
-            >
-              {instance.name}
+              {model.name}
             </button>
           ))}
         </div>
